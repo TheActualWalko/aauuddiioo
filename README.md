@@ -1,1 +1,1 @@
-# aauuddiioo - 2015: demo-esque frontend for a minimal music sharing community
+# aauuddiioo - 2015: music sharing community frontend in 1263 bytes of HTML
