@@ -1,1 +1,3 @@
-# aauuddiioo - 2015: music sharing community frontend in ~~1263~~ 1243 bytes of HTML
+# aauuddiioo
+
+A fun and mysterious anonymous music sharing site. Upload anonymous unnamed mp3s; last 10 uploads are available to play and download.
