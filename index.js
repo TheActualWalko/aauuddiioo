@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const fileUpload = require('express-fileupload');
+const fs = require('fs');
 
 const router = express.Router();
 router.use(fileUpload());
@@ -15,7 +16,11 @@ function name() {
   return o;
 }
 
-let tracks = [];
+if (!fs.existsSync('tracks')) {
+  fs.writeFileSync('tracks', '[]');
+}
+
+let tracks = JSON.parse(fs.readFileSync('tracks'));
 router.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')) );
 router.get('/s', (req, res) =>  {
   res.set('Content-Type', 'Application/JSON');
@@ -31,6 +36,7 @@ router.post('/', (req, res) =>  {
         console.error(e);
       } else {
         tracks = [filename].concat(tracks.slice(0, 9));
+        fs.writeFileSync('tracks', JSON.stringify(tracks));
       }
       console.log(tracks);
       res.sendFile(path.join(__dirname, 'index.html'));
